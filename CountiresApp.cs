@@ -20,38 +20,63 @@ namespace Lab_16
             Console.WriteLine("Countries List App! \n 1: See the list. \n 2: Add a country. \n 3: Exit.");
             bool checkParse = int.TryParse(Console.ReadLine(),out input);
             input--;
-            while (checkParse)
+            while (!checkParse)
             {
-                switch (input)
-                {
+                Console.WriteLine("Please pick 1, 2 or 3.");
+                UserMenu();
+            }
+
+            switch (input)
+            {
                     case 0:
-                        CountriesTextFile Read = new CountriesTextFile(FilePath);
-                        return Read.ReadFile(FilePath);//ADD THE LIST METHOD CALL HERE
+                        CountriesTextFile read = new CountriesTextFile(FilePath);
+                        string s = read.ReadFile(FilePath);
+                        return s;
                         break;
 
                     case 1:
-                        //return //PUT ADD COUNTRY METHOD CALL HERE
+                        do
+                        {
+                            CountriesTextFile baseFile = new CountriesTextFile(FilePath);
+                            string a = baseFile.ReadFile(FilePath);
+
+                            CountriesTextFile Write = new CountriesTextFile(FilePath);
+                            Console.WriteLine("Enter the country you would like to add. ");
+                            string userC = Console.ReadLine();
+                            Write.WriteToFile(a + '\n' + userC); 
+
+                        } while (Continue());
                         break;
 
                     case 2:
-                       
+                        return "All done.";
                         break;
                     default:
                         return UserMenu();
                     break;
-                }
             }
-
-            return "test";
+            return "Goodbye!";
         }
 
+        public void DeleteCountry()
+        {
+            CountriesTextFile baseFile = new CountriesTextFile(FilePath);
+            string a = baseFile.ReadFile(FilePath);
+
+            Console.WriteLine("Enter a country to delete");
+            string input = Console.ReadLine();
+
+            // a.Split(input,input.Length);
+
+        }
 
         public static bool Continue()
         {
-            Console.WriteLine("Back to the main menu? {Y/N}");
+            Console.WriteLine("Add another? {Y/N}");
             string input = Console.ReadLine().ToLower();
             if (input == "y")
             {
+                Console.Clear();
                 return true;
             }
             else if (input == "n")
@@ -59,10 +84,9 @@ namespace Lab_16
                 return false;
             }
             else Console.WriteLine("Please Try Again.");
-
             return Continue();
-
-
         }
+
+
     }
 }

@@ -12,10 +12,24 @@ namespace Lab_16
         {
 
             CountriesApp menuApp = new CountriesApp();
-
-            Console.WriteLine("Hello!");
-
-            menuApp.UserMenu();
+            bool check = false;
+            do
+            {
+                Console.WriteLine(menuApp.UserMenu());
+                
+                Console.WriteLine("Back to the menu? Y/N");
+                string input = Console.ReadLine().ToLower();
+                Console.Clear();
+                if (input == "y")
+                {
+                    check = true;
+                }
+                else
+                {
+                    check = false;
+                }
+                
+            } while (check);
 
             Console.ReadLine();
 
