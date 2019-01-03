@@ -32,7 +32,6 @@ namespace Lab_16
                         CountriesTextFile read = new CountriesTextFile(FilePath);
                         string s = read.ReadFile(FilePath);
                         return s;
-                        break;
 
                     case 1:
                         do
@@ -65,9 +64,6 @@ namespace Lab_16
 
             Console.WriteLine("Enter a country to delete");
             string input = Console.ReadLine();
-
-            
-
         }
 
         public static bool Continue()
