@@ -66,7 +66,7 @@ namespace Lab_16
             Console.WriteLine("Enter a country to delete");
             string input = Console.ReadLine();
 
-            // a.Split(input,input.Length);
+            
 
         }
 
